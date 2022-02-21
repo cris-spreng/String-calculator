@@ -31,35 +31,35 @@ window.onload = function () {
 
         const calcula = (arr) => {
 
-        var ops = [{'^': (a, b) => Math.pow(a, b)},
-               {'*': (a, b) => a * b, '/': (a, b) => a / b},
-               {'+': (a, b) => a + b, '-': (a, b) => a - b}],
-        newCalc = [],
-        currentOp;
-    for (var i = 0; i < ops.length; i++) {
-        for (var j = 0; j < arr.length; j++) {
-            if (ops[i][arr[j]]) {
-                currentOp = ops[i][arr[j]];
+            var ops = [{'^': (a, b) => Math.pow(a, b)},
+                   {'*': (a, b) => a * b, '/': (a, b) => a / b},
+                   {'+': (a, b) => a + b, '-': (a, b) => a - b}],
+            newCalc = [],
+            currentOp;
+            for (var i = 0; i < ops.length; i++) {
+                for (var j = 0; j < arr.length; j++) {
+                    if (ops[i][arr[j]]) {
+                        currentOp = ops[i][arr[j]];
 
-            } else if (currentOp) {
-                newCalc[newCalc.length - 1] = 
-                    currentOp(newCalc[newCalc.length - 1], arr[j]);
-                    console.log(newCalc.length + " : "+ newCalc[newCalc.length - 1]);
-                currentOp = null;
-            } else {
-                newCalc.push(arr[j]);
+                    } else if (currentOp) {
+                        newCalc[newCalc.length - 1] = 
+                            currentOp(newCalc[newCalc.length - 1], arr[j]);
+                            console.log(newCalc.length + " : "+ newCalc[newCalc.length - 1]);
+                        currentOp = null;
+                    } else {
+                        newCalc.push(arr[j]);
+                    }
+                    console.log(newCalc);
+                }
+                arr = newCalc;
+                newCalc = [];
             }
-            console.log(newCalc);
-        }
-        arr = newCalc;
-        newCalc = [];
-    }
-    if (arr.length > 1) {
-        console.log('Error: No se pudo resolver');
-        return arr;
-    } else {
-        return arr[0];
-    }
+            if (arr.length > 1) {
+                console.log('Error: No se pudo resolver');
+                return arr;
+            } else {
+                return arr[0];
+            }
         }
 
         if(str != ''){
