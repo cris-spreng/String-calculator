@@ -61,10 +61,9 @@ window.onload = function () {
         return arr[0];
     }
         }
+
         if(str != ''){
-            
             document.getElementById("results").innerHTML = calcula(parseCalc(str));
-        //console.log(bla);
         }
     });
 
